@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Jagir — LinkedIn Capture",
+  "version": "1.1.0",
+  "description": "Click while viewing your LinkedIn Saved Jobs or Applied Jobs list to send them to your local Jagir tracker.",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "host_permissions": ["https://www.linkedin.com/*", "http://localhost:8080/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Capture LinkedIn jobs into Jagir"
+  }
+}

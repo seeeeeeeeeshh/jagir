@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  :root {
+    --bg: #15171b; --panel: #1b1e24; --panel-raised: #20242b; --border: #2a2e37;
+    --text: #e4e6eb; --text-dim: #8b93a1; --blue: #5b9dd9; --green: #5fb88a;
+    --amber: #e0a83a; --red: #d9706b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    width: 320px; margin: 0; background: var(--bg); color: var(--text);
+    font-family: ui-sans-serif, system-ui, sans-serif; font-size: 13px;
+  }
+  .header {
+    padding: .75rem 1rem; border-bottom: 1px solid var(--border);
+    font-weight: 700; letter-spacing: .06em; font-size: .78rem; text-transform: uppercase;
+  }
+  .body { padding: 1rem; }
+  button {
+    width: 100%; padding: .6rem; background: var(--blue); color: #0d1117; border: none;
+    border-radius: 4px; font-weight: 600; font-size: .85rem; cursor: pointer;
+  }
+  button:disabled { opacity: .6; cursor: default; }
+  button.secondary { background: transparent; border: 1px solid var(--border); color: var(--text-dim); margin-top: .5rem; }
+  .status { margin-top: .75rem; font-size: .8rem; color: var(--text-dim); min-height: 1.2em; }
+  .status.ok { color: var(--green); }
+  .status.warn { color: var(--amber); }
+  .status.error { color: var(--red); }
+  .items {
+    margin-top: .75rem; max-height: 220px; overflow-y: auto; border: 1px solid var(--border);
+    border-radius: 4px; background: var(--panel);
+  }
+  .item { padding: .5rem .6rem; border-bottom: 1px solid var(--border); }
+  .item:last-child { border-bottom: none; }
+  .item .title { font-weight: 600; font-size: .78rem; }
+  .item .company { font-size: .72rem; color: var(--text-dim); margin-top: .1rem; }
+  .meta { margin-top: .6rem; font-size: .7rem; color: var(--text-dim); }
+  .hint { margin-top: .75rem; font-size: .7rem; color: var(--text-dim); line-height: 1.4; }
+</style>
+</head>
+<body>
+  <div class="header">Jagir — LinkedIn Capture</div>
+  <div class="body">
+    <button id="capture-btn">Capture from this page</button>
+    <div id="status" class="status">Open your LinkedIn Saved Jobs or Applied Jobs list, then click above.</div>
+    <div id="items" class="items" style="display:none;"></div>
+    <div id="meta" class="meta"></div>
+    <div class="hint">Only reads the page you're currently viewing — nothing runs unless you click the button, and nothing but the captured job data leaves your browser.</div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
