@@ -173,6 +173,30 @@ python -m app.main
 
 Then open http://localhost:8080.
 
+## Setting up on a new machine
+
+The repo holds code only. Your data and credentials are gitignored on
+purpose, so they don't come along with `git clone`:
+
+1. `git clone https://github.com/seeeeeeeeeshh/jagir.git`, then run the
+   Setup steps above (venv, `pip install -r requirements.txt`,
+   `copy .env.example .env`).
+2. **Data:** to bring your applications across, copy
+   `data/job_tracker.db` over by hand (USB, private cloud drive; never
+   commit it). Run `python scripts/backup_db.py` on the old machine first
+   for a consistent snapshot, and copy the `.db` file from `data/backups/`
+   to `data/job_tracker.db` on the new one. Skip this and run
+   `python scripts/init_db.py` instead to start with an empty database.
+3. **Google Calendar:** put `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET`
+   in the new `.env` (same values as before, or create new ones; see the
+   Google Calendar section), then click Connect on the `/calendar` page.
+   `data/google_token.json` is machine-local; don't copy it.
+4. **LinkedIn sync:** the Playwright browser profile
+   (`data/browser_profile/`) is per-machine. Run
+   `playwright install chromium` and log into LinkedIn once in the window
+   that opens.
+5. Run `python -m pytest -q` to confirm the install is healthy.
+
 ## Backups
 
 The whole app is one SQLite file: `data/job_tracker.db`. To back it up, run
